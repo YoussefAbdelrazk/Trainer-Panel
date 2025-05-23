@@ -11,13 +11,13 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { showErrorToast, showSuccessToast } from '@/lib/toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { useVideos } from '../../context/videos-context';
-import { toast } from '../../hooks/use-toast';
 
 const videoFormSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -90,17 +90,10 @@ export function EditVideoForm({ videoId }: EditVideoFormProps) {
   async function onSubmit(data: VideoFormValues) {
     try {
       editVideo(videoId, data);
-      toast({
-        title: 'Video updated successfully',
-        description: 'Your video has been updated.',
-      });
+      showSuccessToast('Video updated successfully');
       router.push('/dashboard/videos');
     } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Something went wrong. Please try again.',
-        variant: 'destructive',
-      });
+      showErrorToast('Something went wrong. Please try again.');
     }
   }
 
@@ -116,7 +109,7 @@ export function EditVideoForm({ videoId }: EditVideoFormProps) {
           />
         </div>
 
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='grid gap-4 sm:grid-cols-2'>
           <div>
             <Label htmlFor='duration'>Duration (minutes)</Label>
             <Input
@@ -143,6 +136,7 @@ export function EditVideoForm({ videoId }: EditVideoFormProps) {
           <Textarea
             id='timeline'
             placeholder='e.g., 1-3 mins: Warm-up, 4-7 mins: Arms...'
+            className='min-h-[100px]'
             {...form.register('timeline')}
           />
         </div>
@@ -240,7 +234,7 @@ export function EditVideoForm({ videoId }: EditVideoFormProps) {
         </div>
       </div>
 
-      <div className='flex gap-4'>
+      <div className='flex flex-col gap-4 sm:flex-row'>
         <Button type='submit' className='flex-1'>
           Save Changes
         </Button>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Toaster } from './components/ui/toaster';
+import { Toaster } from 'sonner';
 import { VideosProvider } from './context/videos-context';
 import './globals.css';
 
@@ -25,7 +25,7 @@ export default function RootLayout({
           <main className='relative flex min-h-screen flex-col'>
             {children}
           </main>
-          <Toaster />
+          <Toaster position='top-right' />
         </VideosProvider>
       </body>
     </html>

@@ -70,13 +70,15 @@ export default function StatisticsPage() {
   return (
     <div className='space-y-8'>
       <div>
-        <h1 className='text-3xl font-bold text-foreground'>Video Statistics</h1>
+        <h1 className='text-2xl font-bold text-foreground sm:text-3xl'>
+          Video Statistics
+        </h1>
         <p className='text-muted-foreground mt-2'>
           Track your video performance and engagement
         </p>
       </div>
 
-      <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+      <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
         <Card>
           <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
             <CardTitle className='text-sm font-medium'>Total Videos</CardTitle>
@@ -129,7 +131,7 @@ export default function StatisticsPage() {
             <CardTitle>Video Status Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className='h-[300px]'>
+            <div className='h-[250px] sm:h-[300px]'>
               <ResponsiveContainer width='100%' height='100%'>
                 <PieChart>
                   <Pie
@@ -163,12 +165,18 @@ export default function StatisticsPage() {
             <CardTitle>Views Over Time</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className='h-[300px]'>
+            <div className='h-[250px] sm:h-[300px]'>
               <ResponsiveContainer width='100%' height='100%'>
                 <LineChart data={viewsOverTime}>
                   <CartesianGrid strokeDasharray='3 3' />
-                  <XAxis dataKey='date' />
-                  <YAxis />
+                  <XAxis
+                    dataKey='date'
+                    tick={{ fontSize: 12 }}
+                    angle={-45}
+                    textAnchor='end'
+                    height={60}
+                  />
+                  <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip />
                   <Line
                     type='monotone'
@@ -188,7 +196,7 @@ export default function StatisticsPage() {
           <CardTitle>Top Performing Videos</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className='h-[300px]'>
+          <div className='h-[250px] sm:h-[300px]'>
             <ResponsiveContainer width='100%' height='100%'>
               <BarChart data={viewsData}>
                 <CartesianGrid strokeDasharray='3 3' />
@@ -197,8 +205,9 @@ export default function StatisticsPage() {
                   angle={-45}
                   textAnchor='end'
                   height={70}
+                  tick={{ fontSize: 12 }}
                 />
-                <YAxis />
+                <YAxis tick={{ fontSize: 12 }} />
                 <Tooltip />
                 <Bar dataKey='views' fill='#8884d8'>
                   {viewsData.map((entry, index) => (

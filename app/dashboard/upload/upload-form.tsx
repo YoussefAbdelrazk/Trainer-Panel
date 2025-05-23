@@ -11,12 +11,12 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
+import { showErrorToast, showSuccessToast } from '@/lib/toast';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
 import { useVideos } from '../../context/videos-context';
-import { toast } from '../../hooks/use-toast';
 
 const videoFormSchema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -76,19 +76,11 @@ export function UploadVideoForm() {
         music: data.music,
       });
 
-      toast({
-        title: 'Video uploaded successfully',
-        description: 'Your video is now pending review.',
-      });
-
+      showSuccessToast('Video uploaded successfully');
       // Reset the form
       form.reset();
     } catch (error) {
-      toast({
-        title: 'Error',
-        description: 'Something went wrong. Please try again.',
-        variant: 'destructive',
-      });
+      showErrorToast('Something went wrong. Please try again.');
     } finally {
       setIsUploading(false);
     }
