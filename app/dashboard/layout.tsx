@@ -50,7 +50,7 @@ export default function DashboardLayout({
                 size='icon'
                 onClick={() => setIsOpen(false)}
               >
-                <X className='h-6 w-6' />
+                {/* <X className='h-6 w-6' /> */}
               </Button>
             </div>
             <nav className='space-y-1 p-4'>
