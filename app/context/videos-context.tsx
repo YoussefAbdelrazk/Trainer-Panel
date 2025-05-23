@@ -56,6 +56,7 @@ type VideosContextType = {
       >
     >
   ) => void;
+  deleteVideo: (id: string) => void;
 };
 
 const VideosContext = createContext<VideosContextType | undefined>(undefined);
@@ -166,9 +167,20 @@ export function VideosProvider({ children }: { children: ReactNode }) {
     );
   };
 
+  const deleteVideo = (id: string) => {
+    setVideos((prev) => prev.filter((video) => video.id !== id));
+  };
+
   return (
     <VideosContext.Provider
-      value={{ videos, addVideo, updateVideoStatus, incrementViews, editVideo }}
+      value={{
+        videos,
+        addVideo,
+        updateVideoStatus,
+        incrementViews,
+        editVideo,
+        deleteVideo,
+      }}
     >
       {children}
     </VideosContext.Provider>

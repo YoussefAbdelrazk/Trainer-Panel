@@ -10,7 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { Edit, Eye } from 'lucide-react';
+import { showErrorToast, showSuccessToast } from '@/lib/toast';
+import { Edit, Eye, Trash2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useVideos } from '../../context/videos-context';
 
@@ -21,8 +22,17 @@ const statusColors = {
 };
 
 export function VideoTable() {
-  const { videos, incrementViews } = useVideos();
+  const { videos, incrementViews, deleteVideo } = useVideos();
   const router = useRouter();
+
+  const handleDelete = (id: string) => {
+    try {
+      deleteVideo(id);
+      showSuccessToast('Video deleted successfully');
+    } catch (error) {
+      showErrorToast('Failed to delete video');
+    }
+  };
 
   return (
     <div className='space-y-4'>
@@ -63,6 +73,14 @@ export function VideoTable() {
                   }
                 >
                   <Edit className='h-4 w-4' />
+                </Button>
+                <Button
+                  variant='ghost'
+                  size='icon'
+                  className='hover:bg-destructive/10 hover:text-destructive'
+                  onClick={() => handleDelete(video.id)}
+                >
+                  <Trash2 className='h-4 w-4' />
                 </Button>
               </div>
             </div>
@@ -129,6 +147,14 @@ export function VideoTable() {
                         }
                       >
                         <Edit className='h-4 w-4' />
+                      </Button>
+                      <Button
+                        variant='ghost'
+                        size='icon'
+                        className='hover:bg-destructive/10 hover:text-destructive'
+                        onClick={() => handleDelete(video.id)}
+                      >
+                        <Trash2 className='h-4 w-4' />
                       </Button>
                     </div>
                   </TableCell>
