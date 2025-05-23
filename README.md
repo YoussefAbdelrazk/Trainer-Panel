@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Catalyst - Trainer Dashboard
 
-## Getting Started
+A modern, responsive dashboard for fitness trainers to manage their training videos and track performance metrics.
 
-First, run the development server:
+![Catalyst Dashboard](public/screenshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Features
+
+- 📱 **Fully Responsive Design**
+
+  - Mobile-first approach
+  - Beautiful UI on all devices
+  - Smooth transitions and animations
+
+- 🎥 **Video Management**
+
+  - Upload training videos
+  - Track video status (Pending, Approved, Rejected)
+  - Edit video details
+  - View video statistics
+
+- 📊 **Advanced Analytics**
+
+  - Total videos overview
+  - View count tracking
+  - Status distribution charts
+  - Performance metrics
+
+- 🌓 **Dark Mode Support**
+  - Light/Dark theme toggle
+  - System preference detection
+  - Smooth theme transitions
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 14](https://nextjs.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **UI Components:** [Shadcn UI](https://ui.shadcn.com/)
+- **Charts:** [Recharts](https://recharts.org/)
+- **Icons:** [Lucide Icons](https://lucide.dev/)
+- **Theme:** [next-themes](https://github.com/pacocoursey/next-themes)
+
+## 🚀 Getting Started
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/catalyst.git
+   cd catalyst
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open [http://localhost:3000](http://localhost:3000) in your browser**
+
+## 📁 Project Structure
+
+```
+catalyst/
+├── app/
+│   ├── components/     # Reusable UI components
+│   ├── context/       # React context providers
+│   ├── dashboard/     # Dashboard pages
+│   └── lib/          # Utility functions
+├── public/           # Static assets
+└── styles/          # Global styles
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Theme Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The project uses Tailwind CSS for styling. You can customize the theme by modifying:
 
-## Learn More
+- `tailwind.config.ts` - Theme configuration
+- `app/globals.css` - CSS variables and global styles
 
-To learn more about Next.js, take a look at the following resources:
+### Dark Mode
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Dark mode is implemented using `next-themes`. You can customize the theme colors in:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/globals.css` - CSS variables for both light and dark themes
 
-## Deploy on Vercel
+## 🤝 Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Shadcn UI](https://ui.shadcn.com/) for the beautiful components
+- [Next.js](https://nextjs.org/) for the amazing framework
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS framework
+
+---
+
+Made with ❤️ by [Your Name]
