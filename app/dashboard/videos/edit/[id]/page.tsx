@@ -1,6 +1,11 @@
 import { EditVideoForm } from '../../edit-form';
 
-export default function EditVideoPage({ params }: { params: { id: string } }) {
+export default async function EditVideoPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
   return (
     <div className='max-w-2xl mx-auto'>
       <div className='mb-8'>
@@ -9,7 +14,7 @@ export default function EditVideoPage({ params }: { params: { id: string } }) {
           Update your video information
         </p>
       </div>
-      <EditVideoForm videoId={params.id} />
+      <EditVideoForm videoId={id} />
     </div>
   );
 }
